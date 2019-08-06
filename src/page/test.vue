@@ -5,6 +5,10 @@
       <el-breadcrumb-item>vuex测试</el-breadcrumb-item>
     </el-breadcrumb>
      <el-divider></el-divider>
+     <div>
+          <input type="button" value="跳转到穿梭框" @click="linkTransfer">
+          <input type="button" value="跳转到转盘时钟" @click="linkClock">
+      </div>
     <p>{{doGetCount}}</p>
     <el-button @click="handleIncrement">
       <strong>+</strong>
@@ -39,10 +43,7 @@
           <h1>我是父组件--{{msg}}</h1>
           <child :parMsg="msg" @func="toShow"></child>
         </div>
-        <div>
-          <input type="button" value="跳转到穿梭框" @click="linkTransfer">
-          <input type="button" value="跳转到转盘时钟" @click="linkClock">
-        </div>
+        
     </div>
   </div>
 </template>
@@ -83,7 +84,6 @@ export default {
     linkTransfer(){
       this.$router.push({
         path: '/transfer',
-        name: 'clock',
         query: {id:1, name:'hhj'}
       });
     },
