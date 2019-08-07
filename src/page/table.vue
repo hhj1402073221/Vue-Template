@@ -76,7 +76,6 @@ export default {
       value: '', // 查询条件
       modelFormVisble: false,
       formLabelWidth: "60px",
-      list: [],
       form: {
         id: "",
         name: "",
@@ -89,20 +88,19 @@ export default {
   },
   mounted: function(){
     this.getUserList();
-    this.list = this.$store.getters.user;
-
-    this.$forceUpdate();
+  },
+  computed:{ // 通过计算属性获取
+    list(){
+      return this.$store.getters.user;
+    }
   },
   methods: {
     getUserList: function(){
       this.$store.dispatch('getUserAction')
     },
     del: function(id) {
-      this.list.some((item, i) => {
-        if (item.id == id) {
-          this.list.splice(i, 1);
-          return true;
-        }
+      this.$store.dispatch('deleteUserAction', id).then(() => {
+          this.getUserList();
       });
     },
     search: function() {
@@ -156,30 +154,27 @@ export default {
           return;
       }
       this.modelFormVisble = false;
+      var user = {
+          id: this.form.id,
+          name: this.form.name,
+          address: this.form.address,
+          date: new Date()
+      }
       if(this.form.id){ // 修改
-          var index = this.list.findIndex((item) => {
-              if(item.id == this.form.id){
-                return true;
-              }
+          this.$store.dispatch('updateUserAction' ,user).then(() => {
+              this.getUserList();
           });
-          this.$set(this.list[index], 'name', this.form.name);
-          this.$set(this.list[index], 'address', this.form.address);
-          this.$set(this.list[index], 'date', new Date());
       }else{ // 新增
           let len = this.list.length;
           let id = 1;
           if(len > 0){
             id = this.list[len - 1].id + 1;
           }
-          this.list.push({
-              id: id,
-              name: this.form.name,
-              address: this.form.address,
-              date: new Date()
+          user.id = id;
+          this.$store.dispatch('addUserAction' ,user).then(() => {
+              this.getUserList();
           });
       }
-      this.form.id = this.form.name = this.form.address = "";
-      this.$forceUpdate();
     }
   },
   directives: {
