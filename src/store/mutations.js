@@ -7,6 +7,9 @@ const mutation = {
     },
     changTxt: (state, v) => {
         state.show = v
+    },
+    getUserList: (state, user) => {
+        state.user = user
     }
 }
 

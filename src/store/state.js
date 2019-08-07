@@ -1,6 +1,5 @@
 const state = {
-    count: 0,
-    show: ''
+    user: []
 }
 
 export default state;

@@ -76,12 +76,7 @@ export default {
       value: '', // 查询条件
       modelFormVisble: false,
       formLabelWidth: "60px",
-      list: [
-        { id: 1, name: "伟哥", address: "上海市", date: new Date() },
-        { id: 2, name: "老唐", address: "上海市", date: new Date() },
-        { id: 3, name: "老江", address: "北京市", date: new Date() },
-        { id: 4, name: "老黄", address: "北京市", date: new Date() }
-      ],
+      list: [],
       form: {
         id: "",
         name: "",
@@ -92,7 +87,16 @@ export default {
   created: function(){
     console.log('问号传值',this.$route.query.id, this.$route.query.name);
   },
+  mounted: function(){
+    this.getUserList();
+    this.list = this.$store.getters.user;
+
+    this.$forceUpdate();
+  },
   methods: {
+    getUserList: function(){
+      this.$store.dispatch('getUserAction')
+    },
     del: function(id) {
       this.list.some((item, i) => {
         if (item.id == id) {

@@ -23,7 +23,9 @@
         <!-- 模块内容 -->
         <el-main>
           <!-- 路由 -->
-          <router-view class="view"></router-view>
+          <!-- <keep-alive> -->
+            <router-view class="view"></router-view>
+          <!-- </keep-alive> -->
         </el-main>
 
         <!-- 尾部 -->

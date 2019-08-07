@@ -19,4 +19,3 @@ export default new Vuex.Store({
 	strict: debug, // 当debug=true时开启严格模式(性能有损耗)
 	plugins: debug ? [createLogger()] : []
 })
-
