@@ -1,3 +1,10 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-24 14:02:44
+ * @LastEditTime: 2019-08-12 09:03:56
+ * @LastEditors: Please set LastEditors
+ -->
 <template>
   <div>
     <el-breadcrumb separator-class="el-icon-arrow-right">
@@ -74,9 +81,9 @@ export default {
   data() {
     return {
       value: '', // 查询条件
-      modelFormVisble: false,
+      modelFormVisble: false, // 弹出框的状态 false：关，true：开
       formLabelWidth: "60px",
-      form: {
+      form: {  // 弹出框的数据
         id: "",
         name: "",
         address: ""
@@ -117,19 +124,11 @@ export default {
     timestampToTime(timestamp) {
       var date = new Date(timestamp); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
       var Y = date.getFullYear() + "-";
-      var M =
-        (date.getMonth() + 1 < 10
-          ? "0" + (date.getMonth() + 1)
-          : date.getMonth() + 1) + "-";
-      var D =
-        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
-      var h =
-        (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
-      var m =
-        (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) +
-        ":";
-      var s =
-        date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+      var M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
+      var D = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " ";
+      var h = (date.getHours() < 10 ? "0" + date.getHours() : date.getHours()) + ":";
+      var m = (date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()) + ":";
+      var s = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
       return Y + M + D + h + m + s;
     },
     open: function(value) {

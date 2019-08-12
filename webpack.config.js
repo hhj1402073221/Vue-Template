@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-07-24 14:02:44
+ * @LastEditTime: 2019-08-12 09:03:13
+ * @LastEditors: Please set LastEditors
+ */
 const resolve = require('path').resolve
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -28,6 +35,10 @@ module.exports = (options = {}) => ({
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader', 'postcss-loader']
+      },
+      { 
+        test: /\.less$/, 
+        loader: "style-loader!css-loader!less-loader", 
       },
       {
         test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,

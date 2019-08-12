@@ -9,16 +9,7 @@
           <input type="button" value="跳转到穿梭框" @click="linkTransfer">
           <input type="button" value="跳转到转盘时钟" @click="linkClock">
       </div>
-    <p>{{doGetCount}}</p>
-    <el-button @click="handleIncrement">
-      <strong>+</strong>
-    </el-button>
-    <el-button @click="handleDecrement">
-      <strong>-</strong>
-    </el-button>
-     <el-divider></el-divider>
-    <h3>{{doGetShow}}</h3>
-    <el-input placeholder="请输入内容" v-model="obj" @change="changObj" clearable></el-input>
+    
     <div>
         <a href="" @click.prevent="flag=true">登录</a>
         <a href="" @click.prevent="flag=false">注册</a>
@@ -60,24 +51,7 @@ export default {
       comName: "login"
     };
   },
-  computed: {
-    doGetCount () {
-      return this.$store.getters.doGetCount
-    },
-    doGetShow () {
-      return this.$store.getters.doGetShow
-    }
-  },
   methods: {
-    handleIncrement() {
-      this.$store.commit("increment");
-    },
-    handleDecrement() {
-      this.$store.commit("decrement");
-    },
-    changObj() {
-      this.$store.commit("changTxt", this.obj);
-    },
     toShow(data){
       this.msg = data;
     },

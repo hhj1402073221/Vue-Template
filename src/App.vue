@@ -1,3 +1,9 @@
+<!--
+ * @Description: main page
+ * @Author: hhj
+ * @Date: 2019-07-24 14:02:44
+ * @LastEditTime: 2019-08-09 15:10:55
+ -->
 <template>
   <div id="app">
     <el-container>
@@ -66,7 +72,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+@base: #b3c0d1;
+@lineHeight: 60px;
+
 body {
   margin: 0;
   padding: 0;
@@ -75,28 +84,30 @@ body {
 
 .el-container {
   height: 100vh;
+
+  .el-menu-header {
+    height: @lineHeight;
+    text-align: center;
+    line-height: @lineHeight;
+    font-size: 25px;
+    border-bottom: 1px solid #e6e6e6;
+  }
+
+  .el-header {
+    text-align: right;
+    font-size: 20px;
+    background-color: @base;
+    color: #333;
+    line-height: @lineHeight;
+  }
+
+  .el-footer {
+    text-align: center;
+    background-color: @base;
+    color: #333;
+    line-height: @lineHeight;
+  }
 }
 
-.el-menu-header {
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
-  font-size: 25px;
-  border-bottom: 1px solid #e6e6e6;
-}
 
-.el-header {
-  text-align: right;
-  font-size: 20px;
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
-}
-
-.el-footer {
-  text-align: center;
-  background-color: #b3c0d1;
-  color: #333;
-  line-height: 60px;
-}
 </style>
